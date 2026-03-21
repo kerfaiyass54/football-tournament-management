@@ -1,7 +1,7 @@
 
 # Football Tournament Management System 🏆⚽
 
-[![My Skills](https://skillicons.dev/icons?i=py,docker,spring,angular,bootstrap,css,git,github,html,idea,mongodb,npm,postman,githubactions,postgres,elasticsearch)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=py,docker,spring,angular,bootstrap,css,git,github,html,idea,mongodb,npm,postman,githubactions,postgres,elasticsearch,ts,vscode)](https://skillicons.dev)
 
 
 A **modular microservices architecture** for comprehensive football tournament management, featuring a complete ecosystem for all stakeholders in the football industry. This system provides a robust foundation for managing teams, players, matches, tournaments, and all related operations with modern cloud-native technologies.
@@ -11,12 +11,19 @@ A **modular microservices architecture** for comprehensive football tournament m
 ## 🌟 Why This Project?
 
 ✅ **Complete Football Ecosystem** - Manage everything from player stats to tournament organization
+
 ✅ **Microservices Architecture** - Scalable, maintainable, and independently deployable services
+
 ✅ **Multi-Database Support** - PostgreSQL for relational data, MongoDB for flexible document storage
+
 ✅ **Modern Authentication** - Secure with Keycloak integration
+
 ✅ **Real-time Capabilities** - Built with Spring Cloud Stream for event-driven architecture
+
 ✅ **Full-Stack Solution** - Includes both backend microservices and Angular frontend
+
 ✅ **AI Integration** - Built-in AI explainer service for data interpretation
+
 ✅ **Containerized** - Dockerized for easy deployment and scaling
 
 ---
