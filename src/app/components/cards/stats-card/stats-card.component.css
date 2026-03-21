@@ -1,0 +1,67 @@
+.stat-card {
+  width: 100%;
+  min-height: 120px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.stat-header {
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 500;
+  color: #8a8a8a;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Number */
+.stat-number {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  background: linear-gradient(90deg, #1976d2, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+/* 📱 Small screens */
+@media (max-width: 600px) {
+  .stat-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+}
+
+/* 📲 Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .stat-card {
+    padding: 22px;
+  }
+}
+
+@keyframes fadeIn {
+  from{
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

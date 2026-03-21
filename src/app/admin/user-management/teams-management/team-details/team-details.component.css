@@ -1,0 +1,286 @@
+.team-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  margin-top: 60px;
+}
+
+/* ================= CARD ================= */
+
+.team-card {
+  width: 780px;                 /* 🔥 bigger */
+  padding: 40px;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover lift effect */
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+}
+
+/* ================= HEADER ================= */
+
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.team-name {
+  font-size: 30px;              /* 🔥 bigger title */
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Animated Gradient Badge */
+.status-badge {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(270deg, #7b2ff7, #f107a3, #7b2ff7);
+  background-size: 400% 400%;
+  animation: gradientMove 6s ease infinite;
+}
+
+/* ================= INFO ================= */
+
+.team-info {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.info-box {
+  flex: 1;
+  background: #f6f7fb;
+  padding: 22px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Info hover effect */
+.info-box:hover {
+  transform: scale(1.05);
+}
+
+.info-box i {
+  font-size: 20px;
+  color: #7b2ff7;
+}
+
+.flag {
+  width: 36px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.price span {
+  font-weight: 700;
+}
+
+/* ================= BUTTONS ================= */
+
+.team-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.btn-update {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  border: none;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-update:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(123, 47, 247, 0.4);
+}
+
+.btn-delete {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+}
+
+/* ================= ENTRANCE ANIMATION ================= */
+
+.animate-card {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flag-img {
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.team-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.team-card:hover {
+  margin-top: -8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ===== MODAL BASE ===== */
+
+.custom-modal .modal-content {
+  border-radius: 24px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  animation: fadeSlideUp 0.3s ease;
+}
+
+/* ===== HEADER ===== */
+
+.custom-header {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  color: white;
+  border: none;
+  padding: 20px 25px;
+}
+
+.custom-header .modal-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* ===== BODY ===== */
+
+.modal-body {
+  padding: 30px 25px;
+}
+
+.modal-text {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+}
+
+/* ===== FOOTER ===== */
+
+.custom-footer {
+  border: none;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ===== BUTTONS ===== */
+
+.btn-cancel {
+  background: #f1f2f6;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  background: #e5e7eb;
+}
+
+.btn-delete-confirm {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.btn-delete-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+}
+
+.btn-update-confirm {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.btn-update-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(123, 47, 247, 0.4);
+}
+
+/* ===== INPUT STYLE ===== */
+
+.custom-input {
+  border-radius: 14px;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: #7b2ff7;
+  box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.15);
+}
+
+.custom-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+
+/* Animated gradient movement */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

@@ -1,0 +1,236 @@
+/* ================================
+   STEPPER LAYOUT
+================================ */
+
+.stepper-container {
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #ffffff, #ffffff);
+  padding: 2rem 1rem;
+  color: #232325;
+  border-radius: 8px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border-color: blueviolet;
+  border-style: groove;
+  background: #cd4dff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step-item.active .circle {
+  background: #cd4dff;
+  color: white;
+  border-color: #cf8de4;
+
+}
+
+.step-item.completed .circle {
+  background: #9ac690;
+  border-color: #9ac690;
+
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  background: #f8fafc;
+}
+
+.panel {
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================================
+   INPUT
+================================ */
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16,185,129,0.15);
+}
+
+/* ================================
+   FLAGS (FIXED SAFE VERSION)
+================================ */
+
+.flags {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 6px; /* safe spacing */
+}
+
+/* Clean scrollbar */
+.flags::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flags::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.flags::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Flag card */
+
+.flag-card {
+  padding: 0.8rem;
+  border-radius: 14px;
+  background: white;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 2px solid transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.flag-card:hover {
+  transform: translateY(-2px);
+}
+
+.flag-card.selected {
+  border-color: #10b981;
+  box-shadow: 0 6px 15px rgba(16,185,129,0.3);
+}
+
+.flag-card img {
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ================================
+   EXPERTISE (UNCHANGED STRUCTURE)
+================================ */
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.expertise-card {
+  padding: 1rem;
+  border-radius: 14px;
+  background: white;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.expertise-card:hover {
+  transform: translateY(-2px);
+}
+
+.expertise-card.selected {
+  background: #10b981;
+  color: white;
+  box-shadow: 0 6px 15px rgba(16,185,129,0.4);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.next {
+  background: #10b981;
+  color: white;
+}
+
+.back {
+  background: #cbd5e1;
+}
+
+.submit {
+  background: #0f172a;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   REVIEW
+================================ */
+
+.review-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,135 @@
+<div class="stepper-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    @for (step of steps; track $index) {
+      <div
+        class="step-item"
+        [class.active]="activeStep() === $index"
+        [class.completed]="activeStep() > $index"
+        (click)="activeStep.set($index)"
+      >
+        <div class="circle">
+          @if (activeStep() > $index) {
+            ✓
+          } @else {
+            {{ $index + 1 }}
+          }
+        </div>
+        <span>{{ step }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="step-container">
+
+      <!-- STEP 1 -->
+      @if (activeStep() === 0) {
+        <div class="panel">
+          <h2>Basic Information</h2>
+
+          <label>Builder Name</label>
+          <input type="text"
+                 [value]="name()"
+                 (input)="name.set($any($event.target).value)" />
+
+          <label>Nationality</label>
+          <div class="flags">
+            @for (nation of nationalities; track nation.code) {
+              <div
+                class="flag-card"
+                [class.selected]="nationality() === nation.name"
+                (click)="nationality.set(nation.name)"
+              >
+                <img [src]="'https://flagcdn.com/w40/' + nation.code + '.png'" />
+                <span>{{ nation.name }}</span>
+              </div>
+            }
+          </div>
+
+          <button class="next"
+                  [disabled]="!isStep1Valid()"
+                  (click)="next()">Next</button>
+        </div>
+      }
+
+      <!-- STEP 2 -->
+      @if (activeStep() === 1) {
+        <div class="panel">
+          <h2>Stadium Expertise</h2>
+
+          <div class="expertise-grid">
+            @for (exp of expertises; track exp) {
+              <div
+                class="expertise-card"
+                [class.selected]="expertise() === exp"
+                (click)="expertise.set(exp)"
+              >
+                {{ exp.replace('_', ' ') }}
+              </div>
+            }
+          </div>
+
+          <div class="actions">
+            <button class="back" (click)="prev()">Back</button>
+            <button class="next"
+                    [disabled]="!isStep2Valid()"
+                    (click)="next()">Next</button>
+          </div>
+        </div>
+      }
+
+      <!-- STEP 3 -->
+      @if (activeStep() === 2) {
+        <div class="panel">
+          <h2>Company Details</h2>
+
+          <label>Year Established</label>
+          <input type="number"
+                 [value]="yearEstablished()"
+                 (input)="yearEstablished.set(+$any($event.target).value)" />
+
+          <label>Base Price (€)</label>
+          <input type="number"
+                 [value]="price()"
+                 (input)="price.set(+$any($event.target).value)" />
+
+          <div class="actions">
+            <button class="back" (click)="prev()">Back</button>
+            <button class="next"
+                    [disabled]="!isStep3Valid()"
+                    (click)="next()">Next</button>
+          </div>
+        </div>
+      }
+
+      <!-- STEP 4 -->
+      @if (activeStep() === 3) {
+        <div class="panel review">
+          <h2>Review Builder</h2>
+
+          <div class="review-card">
+            <p><strong>Name:</strong> {{ name() }}</p>
+            <p><strong>Nationality:</strong> {{ nationality() }}</p>
+            <p><strong>Expertise:</strong> {{ expertise() }}</p>
+            <p><strong>Year:</strong> {{ yearEstablished() }}</p>
+            <p><strong>Price:</strong> € {{ price() }}</p>
+          </div>
+
+          <div class="actions">
+            <button class="back" (click)="prev()">Back</button>
+            <button class="submit"
+                    [disabled]="!isFormValid()"
+                    (click)="submit()">Create Builder</button>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>
+
+
+<app-previous-button></app-previous-button>

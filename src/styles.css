@@ -1,0 +1,179 @@
+/* =======================================================
+   GLOBAL TOASTR STYLING – MATCHES PURPLE ADMIN UI
+   ======================================================= */
+
+/* ===== CONTAINER FIX ===== */
+
+.toast-container {
+  z-index: 999999 !important;
+  padding: 0 !important;
+  pointer-events: none; /* allow clicking through empty space */
+}
+
+/* Allow clicking on toast itself */
+.toast-container .ngx-toastr {
+  pointer-events: auto;
+}
+
+/* ===== POSITION FIX (Below Navbar) ===== */
+
+.toast-top-right {
+  top: 95px !important;   /* Adjust if navbar height changes */
+  right: 25px !important; /* Space from edge */
+}
+
+.toast-top-left {
+  top: 95px !important;
+  left: 25px !important;
+}
+
+.toast-bottom-right {
+  bottom: 40px !important;
+  right: 25px !important;
+}
+
+.toast-bottom-left {
+  bottom: 40px !important;
+  left: 25px !important;
+}
+
+/* ===== BASE TOAST STYLE ===== */
+
+.toast-container .ngx-toastr {
+  border-radius: 20px !important;
+  padding: 18px 22px !important;
+  font-family: inherit;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(10px);
+  border: none !important;
+  animation: toastSlideIn 0.35s ease;
+  min-width: 320px;
+}
+
+/* ===== SUCCESS ===== */
+
+.toast-success {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3) !important;
+  color: #ffffff !important;
+}
+
+/* ===== ERROR ===== */
+
+.toast-error {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* ===== INFO ===== */
+
+.toast-info {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* ===== WARNING ===== */
+
+.toast-warning {
+  background: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+/* ===== TITLE ===== */
+
+.toast-title {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+/* ===== MESSAGE ===== */
+
+.toast-message {
+  font-size: 13px;
+  opacity: 0.95;
+  margin-top: 4px;
+}
+
+/* ===== CLOSE BUTTON ===== */
+
+.toast-close-button {
+  color: #ffffff !important;
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.toast-close-button:hover {
+  opacity: 1;
+}
+
+/* ===== PROGRESS BAR ===== */
+
+.toast-progress {
+  background: rgba(255, 255, 255, 0.7) !important;
+  height: 4px !important;
+  border-radius: 10px;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   TOAST TYPOGRAPHY
+   ========================= */
+
+.toast-container .ngx-toastr {
+  font-family: 'Inter', 'Segoe UI', sans-serif !important;
+  letter-spacing: 0.3px;
+}
+
+/* Title */
+.toast-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 4px !important;
+}
+
+/* Message */
+.toast-message {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  opacity: 0.9 !important;
+}
+
+/* =========================
+   CLOSE BUTTON FIX
+   ========================= */
+
+.toast-close-button {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px;
+  padding: 2px 6px !important;
+
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+
+  opacity: 0.9 !important;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.toast-close-button:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  opacity: 1 !important;
+  transform: scale(1.05);
+}

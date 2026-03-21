@@ -1,0 +1,110 @@
+<app-loader [visible]="loading()"></app-loader>
+
+@if (!loading()) {
+
+  <div class="manager-wrapper">
+
+    <div class="manager-card animate-card">
+
+      <div class="manager-header">
+        <h2 class="manager-name">{{ manager?.name }}</h2>
+        <span class="status-badge">
+          {{ manager?.status }}
+        </span>
+      </div>
+
+      <div class="manager-info">
+
+        @if(manager?.nationality){
+          <div class="info-box nationality">
+            <img
+              [src]="'https://flagcdn.com/w40/' + countryCode + '.png'"
+              class="flag-img"
+              alt="flag"
+            />
+            <span>{{ manager?.nationality }}</span>
+          </div>
+        }
+
+        <div class="info-box">
+          <i class="bi bi-calendar-event"></i>
+          <span>{{ manager?.yearOfBirth }}</span>
+        </div>
+
+      </div>
+
+      <div class="manager-actions">
+        <button class="btn-update"
+                data-bs-toggle="modal"
+                data-bs-target="#updateStatusModal">
+          Update Status
+        </button>
+
+        <button class="btn-delete"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal">
+          Delete
+        </button>
+      </div>
+
+    </div>
+
+    <app-previous-button></app-previous-button>
+
+  </div>
+}
+
+<!-- DELETE MODAL -->
+<div class="modal fade custom-modal" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header custom-header">
+        <h5 class="modal-title">Delete Manager</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        Are you sure you want to delete this manager?
+      </div>
+
+      <div class="modal-footer custom-footer">
+        <button class="btn-cancel" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-delete-confirm" (click)="confirmDelete()">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE STATUS MODAL -->
+<div class="modal fade custom-modal" id="updateStatusModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header custom-header">
+        <h5 class="modal-title">Update Status</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <label class="custom-label">Select Status</label>
+
+        <select class="form-select custom-input"
+                [(ngModel)]="newStatus">
+          <option value="">Select...</option>
+          <option value="FREE">FREE</option>
+          <option value="TAKEN">TAKEN</option>
+          <option value="RETIRED">RETIRED</option>
+          <option value="BANNED">BANNED</option>
+        </select>
+      </div>
+
+      <div class="modal-footer custom-footer">
+        <button class="btn-cancel" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-update-confirm" (click)="confirmUpdateStatus()">Update</button>
+      </div>
+
+    </div>
+  </div>
+</div>

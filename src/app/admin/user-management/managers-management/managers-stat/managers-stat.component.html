@@ -1,0 +1,31 @@
+<!-- Chart Full Row -->
+<div class="dashboard-row">
+  <app-cake-chart
+    [labels]="statusLabels"
+    [info]="statusData"
+    [colors]="statusColors"
+    title="Manager Status Distribution">
+  </app-cake-chart>
+</div>
+
+<!-- Stats Row -->
+<div class="stats-row">
+
+  <div class="stat-card">
+    <h4>Youngest Manager</h4>
+    <p class="stat-value">{{ youngestManager }}</p>
+  </div>
+
+  <div class="stat-card">
+    <h4>Oldest Manager</h4>
+    <p class="stat-value">{{ oldestManager }}</p>
+  </div>
+
+  <div class="stat-card">
+    <h4>Most Nationality</h4>
+    <p class="stat-value">{{ mostNationality }}</p>
+  </div>
+
+</div>
+
+<app-previous-button></app-previous-button>

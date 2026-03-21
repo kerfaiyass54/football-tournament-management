@@ -1,0 +1,22 @@
+<div class="chart-card">
+  <div class="chart-content">
+
+    <!-- LEFT SIDE -->
+    <div class="chart-text">
+      <h2 class="chart-title">{{title}}</h2>
+      <p class="chart-subtitle">
+        {{subtitle}}
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="chart-wrapper">
+      <p-chart
+        type="doughnut"
+        [data]="data"
+        [options]="options">
+      </p-chart>
+    </div>
+
+  </div>
+</div>

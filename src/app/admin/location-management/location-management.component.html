@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+  <div class="role-section">
+    <h2 class="section-title">Select zone</h2>
+    <p class="section-subtitle">
+      Choose the zone from where you want to manage locations
+    </p>
+
+    <div class="hover-card">
+      @for (label of labels(); track label.link) {
+        <a class="panel" [routerLink]="label.link">
+          {{ label.title }}
+        </a>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<nav class="navbar" [class.open]="isMenuOpen">
+  <!-- Left -->
+  <div class="nav-left">
+    <button class="burger" (click)="toggleMenu()" routerLink="{{homepage}}"><h1>FTM</h1></button>
+
+  </div>
+
+  <div class="dropdowns">
+    @for (element of elements; track element.index) {
+      <div class="dropdown">
+        <button (click)="toggleDropdown(element.index)" routerLink="{{element.link}}">
+          {{element.label}}
+        </button>
+      </div>
+    }
+  </div>
+
+  <!-- Right / Account -->
+  <div class="account">
+    <button class="avatar" (click)="toggleAccount()"></button>
+
+    <div class="account-menu" [class.open]="accountOpen">
+      <button>My Profile</button>
+      <button>Settings</button>
+      <button class="danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

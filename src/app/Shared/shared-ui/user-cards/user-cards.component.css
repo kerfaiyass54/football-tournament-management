@@ -1,0 +1,183 @@
+/* ========================= */
+/* PAGE WRAPPER */
+/* ========================= */
+
+.page-wrapper {
+  min-height: calc(60vh - 70px);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;   /* 👈 stack vertically */
+}
+
+
+/* ========================= */
+/* GRID */
+/* ========================= */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 480px); /* bigger width */
+  gap: 80px 120px;
+  justify-content: center;
+}
+
+/* ========================= */
+/* BIGGER CARD */
+/* ========================= */
+
+.card {
+  width: 480px;
+  height: 220px;
+  background: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 24px;
+  cursor: pointer;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+/* Text transition */
+.card h2 {
+  z-index: 1;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  transition: color 0.4s ease;
+}
+
+.card:hover::after {
+  background: #ffffff;
+}
+
+.card:hover h2 {
+  color: #07182E;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Delay each card slightly */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.3s; }
+.card:nth-child(3) { animation-delay: 0.5s; }
+.card:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ========================= */
+/* ROTATING BORDER */
+/* ========================= */
+
+.card::before {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 250%;
+  background-image: linear-gradient(
+    180deg,
+    #6c5ce7,
+    #a855f7,
+    #00b7ff
+  );
+  animation: rotBGimg 4s linear infinite;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* inner dark card */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background: #07182E;
+  border-radius: 15px;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+
+/* ========================= */
+/* BOTTOM NAVIGATION */
+/* ========================= */
+
+.bottom-nav {
+  margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prev-btn {
+  padding: 12px 40px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6c5ce7, #cd4dff);
+  color: white;
+  cursor: pointer;
+  letter-spacing: 2px;
+
+  transition: all 0.3s ease;
+}
+
+.prev-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* Center only the cards */
+.content {
+  flex: 1;                     /* 👈 pushes button down */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,99 @@
+.search-wrapper {
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+.search-wrapper input {
+  flex: 1;
+  padding: 14px 18px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.search-wrapper input:focus {
+  background: #ffffff;
+  box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.search-wrapper button {
+  padding: 0 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  background: linear-gradient(135deg, #6d28d9, #9333ea);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-wrapper button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.search-wrapper button:active {
+  transform: scale(0.98);
+}
+
+/* Modal container */
+.custom-modal {
+  border-radius: 16px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Input styling */
+.custom-input {
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.custom-input:focus {
+  background: white;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, #6d28d9, #9333ea);
+  border: none;
+  color: white;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-gradient:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-gradient:active {
+  transform: scale(0.97);
+}
+
+/* Label */
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #374151;
+}

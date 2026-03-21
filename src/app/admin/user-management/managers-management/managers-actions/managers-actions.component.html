@@ -1,0 +1,40 @@
+<div class="card shadow-sm">
+
+  <!-- Search Bar -->
+  <div class="search-wrapper">
+    <input
+      type="text"
+      placeholder="Search managers..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="searchTerm.set($event)"
+    />
+
+    <button type="button">
+      <i class="bi bi-search"></i>
+      Search
+    </button>
+  </div>
+
+  <!-- Generic Table -->
+  <app-generic-table
+    [data]="filteredManagers()"
+    [columns]="columns"
+    [enableCheckbox]="true"
+    selectionMode="single"
+    (selectedChange)="onSelectionChange($event)">
+  </app-generic-table>
+
+  <!-- See Details -->
+  <div class="mt-3 d-flex justify-content-end">
+    <button
+      class="btn btn-outline-secondary"
+      [disabled]="selectedManagers().length !== 1"
+      (click)="seeDetails()">
+      See Details
+    </button>
+  </div>
+
+</div>
+
+
+<app-previous-button></app-previous-button>

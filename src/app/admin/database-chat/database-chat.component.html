@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+  <div class="role-section">
+    <h2 class="section-title">Select database</h2>
+    <p class="section-subtitle">
+      Choose the category you want to chat with its database
+    </p>
+
+    <div class="hover-card">
+      @for(l of labels; track $index){
+        <div class="panel" routerLink="{{ '/admin/chatting-ui/' + l.route}}">
+          <span>{{ l.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<!-- Chart Full Row -->
+<div class="dashboard-row">
+  <app-cake-chart
+    [labels]="statusLabels"
+    [info]="statusData"
+    [colors]="statusColors"
+    title="Player Status Distribution">
+  </app-cake-chart>
+</div>
+
+<!-- Stats Row -->
+<div class="stats-row">
+
+  <div class="stat-card">
+    <h4>Youngest Player</h4>
+    <p class="stat-value">{{ youngestPlayer }}</p>
+  </div>
+
+  <div class="stat-card">
+    <h4>Oldest Player</h4>
+    <p class="stat-value">{{ oldestPlayer }}</p>
+  </div>
+
+  <div class="stat-card">
+    <h4>Highest Paid Player</h4>
+    <p class="stat-value">
+      {{ highestPaid }}
+    </p>
+  </div>
+
+</div>
+
+<app-previous-button></app-previous-button>

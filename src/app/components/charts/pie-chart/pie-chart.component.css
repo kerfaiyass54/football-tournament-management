@@ -1,0 +1,81 @@
+
+.chart-card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.chart-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* LEFT SIDE */
+.chart-text {
+  flex: 1;
+}
+
+.chart-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.chart-subtitle {
+  margin-top: 0.5rem;
+  color: var(--text-color-secondary);
+  font-size: 0.95rem;
+}
+
+/* RIGHT SIDE */
+.chart-wrapper {
+  flex: 1;
+  max-width: 350px;
+  height: 300px;
+}
+
+/* Make chart fill container */
+:host ::ng-deep canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .chart-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chart-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: 260px;
+  }
+}
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from{
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

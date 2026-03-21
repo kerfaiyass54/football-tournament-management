@@ -1,0 +1,28 @@
+.bottom-nav {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prev-btn {
+  padding: 12px 40px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6c5ce7, #cd4dff);
+  color: white;
+  cursor: pointer;
+  letter-spacing: 2px;
+
+  transition: all 0.3s ease;
+}
+
+.prev-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.prev-btn:active {
+  transform: scale(0.95);
+}

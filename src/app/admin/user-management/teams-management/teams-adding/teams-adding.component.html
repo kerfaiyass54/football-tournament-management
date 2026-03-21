@@ -1,0 +1,108 @@
+<div class="stepper-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    @for (step of steps; track $index) {
+      <div
+        class="step-item"
+        [class.active]="activeStep() === $index"
+        [class.completed]="activeStep() > $index"
+        (click)="activeStep.set($index)"
+      >
+        <div class="circle">
+          @if (activeStep() > $index) { ✓ }
+          @else { {{ $index + 1 }} }
+        </div>
+        <span>{{ step }}</span>
+      </div>
+    }
+    <app-previous-button></app-previous-button>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="step-container">
+
+      <!-- STEP 1 -->
+      @if (activeStep() === 0) {
+        <div class="panel">
+          <h2>Basic Information</h2>
+
+          <label>Team Name</label>
+          <input type="text"
+                 [value]="name()"
+                 (input)="name.set($any($event.target).value)" />
+
+          <label>City</label>
+          <input type="text"
+                 [value]="city()"
+                 (input)="city.set($any($event.target).value)" />
+
+          <label>Establishment Year</label>
+          <input type="number"
+                 [value]="establishYear()"
+                 (input)="establishYear.set(+$any($event.target).value)" />
+
+          <button class="next"
+                  [disabled]="!isStep1Valid()"
+                  (click)="next()">Next</button>
+        </div>
+      }
+
+      <!-- STEP 2 -->
+      @if (activeStep() === 1) {
+        <div class="panel">
+          <h2>Team Details</h2>
+
+          <label>Rank</label>
+          <input type="number"
+                 [value]="rank()"
+                 (input)="rank.set(+$any($event.target).value)" />
+
+          <label>Status</label>
+          <select (change)="status.set($any($event.target).value)">
+            @for (st of statuses; track st) {
+              <option [value]="st">{{ st }}</option>
+            }
+          </select>
+
+          <label>Budget</label>
+          <input type="number"
+                 [value]="budget()"
+                 (input)="budget.set(+$any($event.target).value)" />
+
+          <div class="actions">
+            <button class="back" (click)="prev()">Back</button>
+            <button class="next"
+                    [disabled]="!isStep2Valid()"
+                    (click)="next()">Next</button>
+          </div>
+        </div>
+      }
+
+      <!-- STEP 3 -->
+      @if (activeStep() === 2) {
+        <div class="panel review">
+          <h2>Review Team</h2>
+
+          <div class="review-card">
+            <p><strong>Name:</strong> {{ name() }}</p>
+            <p><strong>City:</strong> {{ city() }}</p>
+            <p><strong>Established:</strong> {{ establishYear() }}</p>
+            <p><strong>Rank:</strong> {{ rank() }}</p>
+            <p><strong>Status:</strong> {{ status() }}</p>
+            <p><strong>Budget:</strong> {{ budget() }}</p>
+          </div>
+
+          <div class="actions">
+            <button class="back" (click)="prev()">Back</button>
+            <button class="submit"
+                    [disabled]="!isFormValid()"
+                    (click)="submit()">Create Team</button>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

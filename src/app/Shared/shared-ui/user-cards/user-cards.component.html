@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+
+  <div class="content">
+    <div class="cards-grid">
+      @for(cardLink of cardsLinks; track $index){
+        <div class="card" [routerLink]="cardLink.link">
+          <h2>{{cardLink.label}}</h2>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Bottom Button -->
+<app-previous-button></app-previous-button>
+
+</div>

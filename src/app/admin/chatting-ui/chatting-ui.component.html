@@ -1,0 +1,42 @@
+<app-previous-button></app-previous-button>
+
+<div class="chat-container">
+
+
+  <div class="chat-header">
+    <h2>{{ serviceName | uppercase }} AI Assistant</h2>
+    <button class="export-btn" (click)="exportConversation()">
+      Export Conversation
+    </button>
+  </div>
+
+  <div class="messages">
+
+    @for (msg of messages(); track msg) {
+      <div class="message" [class.user]="msg.role === 'user'">
+        <pre>{{ msg.content }}</pre>
+      </div>
+    }
+
+    @if (thinking()) {
+      <div class="message ai thinking">
+        <div class="dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    }
+
+  </div>
+
+  <div class="input-area">
+    <input
+      type="text"
+      placeholder="Ask something..."
+      [ngModel]="inputText()"
+      (ngModelChange)="inputText.set($event)"
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+
+</div>

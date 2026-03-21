@@ -1,0 +1,229 @@
+:host {
+  font-family: "Euclid Circular A", "Poppins";
+}
+
+/* ---------- Base ---------- */
+
+button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+img {
+  width: 14px;
+  transition: rotate 0.3s ease;
+}
+
+/* ---------- Navbar Layout ---------- */
+
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 72px;
+  padding: 0 20px;
+  background: linear-gradient(to right, #9d50bb, #6e48aa);
+  color: #fff;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* ✅ balance */
+  align-items: center;
+}
+
+.dropdowns {
+  justify-self: center;
+}
+
+.account {
+  justify-self: end;
+}
+
+
+/* ---------- Left ---------- */
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgb(255 255 255 / 15%);
+}
+
+/* ---------- Burger ---------- */
+
+.burger {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 15%);
+}
+
+/* ---------- Center Dropdowns ---------- */
+
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 72px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.dropdown:hover > button {
+  opacity: 1;
+}
+
+/* ---------- Dropdown Menu Animation ---------- */
+
+.dropdown-menu {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  translate: -50% 10px;
+  background: #202024;
+  border-radius: 8px;
+  padding: 10px 18px;
+  opacity: 0;
+  visibility: hidden;
+  scale: 0.95;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(.4,0,.2,1);
+
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  translate: -50% 0;
+  scale: 1;
+}
+
+.dropdown-menu button {
+  display: block;
+  padding: 8px 0;
+  opacity: 0.7;
+}
+
+.dropdown-menu button:hover {
+  opacity: 1;
+}
+
+/* rotate arrow */
+.dropdown-menu.open ~ img,
+.dropdown > button:has(+ .dropdown-menu.open) img {
+  rotate: 180deg;
+}
+
+/* ---------- Account ---------- */
+
+.account {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 20%);
+  font-weight: 600;
+}
+
+/* Account menu animation */
+.account-menu {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  background: #202024;
+  border-radius: 10px;
+  padding: 10px 16px;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 10px;
+  scale: 0.95;
+  transition: 0.25s ease;
+}
+
+.account-menu.open {
+  opacity: 1;
+  visibility: visible;
+  translate: 0;
+  scale: 1;
+}
+
+.account-menu button {
+  display: block;
+  padding: 8px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.account-menu .danger {
+  color: #ff6b6b;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 500px) {
+  .dropdowns {
+    position: fixed;
+    top: 72px;
+    left: 12px;
+    right: 12px;
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* ✅ vertical centering */
+    align-items: center;     /* ✅ horizontal centering */
+
+    gap: 12px;
+    background: linear-gradient(to right, #9d50bb, #6e48aa);
+    padding: 20px 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+  }
+
+  .navbar.open .dropdowns {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown > button {
+    justify-content: center;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  .navbar.open .burger {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

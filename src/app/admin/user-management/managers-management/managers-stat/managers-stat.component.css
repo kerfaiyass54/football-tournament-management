@@ -1,0 +1,74 @@
+.dashboard-row {
+  width: 100%;
+  margin-bottom: 30px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.stats-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Card Base */
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+
+  /* Soft colored border */
+  border: 2px solid #e0e0e0;
+
+  /* Soft shadow */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+
+  /* Smooth hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Different border colors */
+.stat-card:nth-child(1) {
+  border-color: #42A5F5; /* Blue */
+}
+
+.stat-card:nth-child(2) {
+  border-color: #66BB6A; /* Green */
+}
+
+.stat-card:nth-child(3) {
+  border-color: #FFA726; /* Orange */
+}
+
+/* Hover effect */
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.stat-card h4 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Simple fade animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

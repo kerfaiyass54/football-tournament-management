@@ -1,0 +1,97 @@
+<div class="card">
+
+  <!-- Top Controls -->
+  <div class="top-bar">
+
+    <input
+      class="form-control"
+      placeholder="Search..."
+      [ngModel]="globalSearch()"
+      (ngModelChange)="globalSearch.set($event)"
+    />
+
+    <select class="form-select"
+            [ngModel]="pageSize()"
+            (ngModelChange)="setPageSize($event)">
+      @for (s of pageSizeOptions(); track s) {
+        <option [ngValue]="s">{{ s }}</option>
+      }
+    </select>
+
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+
+    <table class="modern-table">
+
+      <thead>
+      <tr>
+        @if (enableCheckbox()) {
+          <th class="checkbox-col">
+            <input type="checkbox" (change)="toggleAll()">
+          </th>
+        }
+
+        @for (col of columns(); track col.key) {
+          <th
+            (click)="col.sortable && sort(col.key)"
+            [class.sortable]="col.sortable">
+            {{ col.label }}
+          </th>
+        }
+      </tr>
+      </thead>
+
+      <tbody>
+        @for (row of paginatedData(); track row.id; let i = $index) {
+          <tr
+            [class.selected]="isSelected(row.id)"
+            [style.animationDelay.ms]="i * 40">
+
+            @if (enableCheckbox()) {
+              <td class="checkbox-col">
+                <input type="checkbox"
+                       [checked]="isSelected(row.id)"
+                       (change)="toggleRow(row.id)">
+              </td>
+            }
+
+            @for (col of columns(); track col.key) {
+              <td>{{ row[col.key] }}</td>
+            }
+
+          </tr>
+        }
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-wrapper">
+
+    <button
+      (click)="changePage(currentPage() - 1)"
+      [disabled]="currentPage() === 1">
+      «
+    </button>
+
+    @for (p of pages(); track p) {
+      <button
+        [class.active]="currentPage() === p"
+        (click)="changePage(p)">
+        {{ p }}
+      </button>
+    }
+
+    <button
+      (click)="changePage(currentPage() + 1)"
+      [disabled]="currentPage() === totalPages()">
+      »
+    </button>
+
+  </div>
+
+</div>

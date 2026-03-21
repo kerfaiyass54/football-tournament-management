@@ -1,0 +1,121 @@
+/* FULL PAGE CENTERING */
+.page-wrapper {
+  min-height: calc(60vh - 80px); /* subtract navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Section */
+.role-section {
+  text-align: center;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Title */
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #5b3cc4;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Subtitle */
+.section-subtitle {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 60px;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.2s forwards;
+}
+
+/* Card container */
+.hover-card {
+  width: 1200px;
+  height: 420px;
+  border-radius: 28px;
+  background: #ffffff;
+  display: flex;
+  gap: 18px;
+  padding: 30px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* Panels */
+.panel {
+  flex: 1;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7b4dff, #9c6bff);
+  transition: flex 0.6s cubic-bezier(.25,.8,.25,1),
+  transform 0.3s ease,
+  box-shadow 0.3s ease;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: panelEnter 0.6s ease forwards;
+}
+
+/* Stagger animation */
+.panel:nth-child(1) { animation-delay: 0.1s; }
+.panel:nth-child(2) { animation-delay: 0.2s; }
+.panel:nth-child(3) { animation-delay: 0.3s; }
+.panel:nth-child(4) { animation-delay: 0.4s; }
+.panel:nth-child(5) { animation-delay: 0.5s; }
+.panel:nth-child(6) { animation-delay: 0.6s; }
+.panel:nth-child(7) { animation-delay: 0.7s; }
+
+/* Hover */
+.panel:hover {
+  flex: 5;
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(123, 77, 255, 0.4);
+  background: linear-gradient(135deg, #6a3df0, #8e5cff);
+}
+
+/* Text */
+.panel span {
+  transform: rotate(-90deg);
+  transition: transform 0.6s ease, font-size 0.3s ease;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Expanded text */
+.panel:hover span {
+  transform: rotate(0deg);
+  font-size: 34px;
+}
+
+/* Animations */
+@keyframes panelEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,136 @@
+<app-loader [visible]="loading()"></app-loader>
+
+@if (!loading()) {
+
+  <div class="team-wrapper">
+
+    <div class="team-card animate-card">
+
+      <div class="team-header">
+        <h2 class="team-name">{{ team?.name }}</h2>
+        <span class="status-badge">
+          {{ team?.status }}
+        </span>
+      </div>
+
+      <div class="team-info">
+
+        <div class="info-box">
+          <i class="bi bi-geo-alt"></i>
+          <span>{{ team?.city }}</span>
+        </div>
+
+        <div class="info-box">
+          <i class="bi bi-calendar-event"></i>
+          <span>{{ team?.establishYear }}</span>
+        </div>
+
+        <div class="info-box">
+          <i class="bi bi-trophy"></i>
+          <span>Rank {{ team?.rank }}</span>
+        </div>
+
+        <div class="info-box price">
+          <i class="bi bi-currency-euro"></i>
+          <span>€ {{ team?.budget }}</span>
+        </div>
+
+      </div>
+
+      <div class="team-actions">
+        <button class="btn-update"
+                data-bs-toggle="modal"
+                data-bs-target="#updateStatusModal">
+          Update Status
+        </button>
+
+        <button class="btn-delete"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal">
+          Delete
+        </button>
+      </div>
+
+    </div>
+
+    <app-previous-button></app-previous-button>
+
+  </div>
+}
+
+<!-- DELETE MODAL -->
+<div class="modal fade custom-modal" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header custom-header">
+        <h5 class="modal-title">Delete Team</h5>
+        <button type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal">
+        </button>
+      </div>
+
+      <div class="modal-body text-center">
+        Are you sure you want to delete this team?
+      </div>
+
+      <div class="modal-footer custom-footer">
+        <button class="btn-cancel"
+                data-bs-dismiss="modal">
+          Cancel
+        </button>
+
+        <button class="btn-delete-confirm"
+                (click)="confirmDelete()">
+          Delete
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE STATUS MODAL -->
+<div class="modal fade custom-modal" id="updateStatusModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header custom-header">
+        <h5 class="modal-title">Update Team Status</h5>
+        <button type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal">
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <label class="custom-label">Select Status</label>
+
+        <select class="form-select custom-input"
+                [(ngModel)]="newStatus">
+
+          <option value="">Select...</option>
+
+          @for (st of statuses; track st) {
+            <option [value]="st">{{ st }}</option>
+          }
+
+        </select>
+      </div>
+
+      <div class="modal-footer custom-footer">
+        <button class="btn-cancel"
+                data-bs-dismiss="modal">
+          Cancel
+        </button>
+
+        <button class="btn-update-confirm"
+                (click)="confirmUpdateStatus()">
+          Update
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

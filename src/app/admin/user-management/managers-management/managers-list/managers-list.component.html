@@ -1,0 +1,14 @@
+<div class="list-table-button">
+
+  <app-custom-list
+    [title]="'Managers'"
+    [cols]="columns"
+    [infos]="data"
+    [page]="page"
+    [size]="size"
+    (pageChange)="onPageChange($event)">
+  </app-custom-list>
+
+  <app-previous-button></app-previous-button>
+
+</div>

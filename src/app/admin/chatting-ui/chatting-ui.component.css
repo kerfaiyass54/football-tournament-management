@@ -1,0 +1,215 @@
+/* ====== GLOBAL CHAT CONTAINER ====== */
+.chat-container {
+  height: 70vh;
+  max-width: 100%;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 20px 60px rgba(124, 77, 255, 0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.3);
+
+  transition: all 0.4s ease;
+}
+
+/* ====== HEADER ====== */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.chat-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7c4dff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeSlide 0.6s ease forwards;
+}
+
+/* ====== EXPORT BUTTON ====== */
+.export-btn {
+  padding: 10px 18px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+
+  background: linear-gradient(135deg, #7c4dff, #00c6ff);
+  color: white;
+
+  transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(124,77,255,0.4);
+}
+
+/* ====== MESSAGE AREA ====== */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  scroll-behavior: smooth;
+}
+
+/* ====== MESSAGE BUBBLES ====== */
+.message {
+  max-width: 75%;
+  padding: 14px 18px;
+  border-radius: 22px;
+  font-size: 14px;
+  line-height: 1.5;
+  animation: messageIn 0.35s ease forwards;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* USER */
+.message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #7c4dff, #9c6bff);
+  color: white;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 10px 25px rgba(124,77,255,0.3);
+}
+
+/* AI */
+.message.ai {
+  align-self: flex-start;
+  background: white;
+  border-bottom-left-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* ====== THINKING ANIMATION ====== */
+.thinking {
+  background: white;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  border-radius: 50%;
+  background: #7c4dff;
+  animation: bounce 1.2s infinite;
+}
+
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ====== INPUT AREA ====== */
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+
+  background: rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.input-area input:focus {
+  background: white;
+  box-shadow: 0 5px 15px rgba(124,77,255,0.2);
+}
+
+/* SEND BUTTON */
+.input-area button {
+  padding: 12px 22px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #7c4dff, #00c6ff);
+  color: white;
+
+  transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(124,77,255,0.4);
+}
+
+.input-area input{
+  color: #0c0c42;
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes messageIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0.4); opacity: 0.6; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+
+  .chat-container {
+    height: 65vh;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .chat-header h2 {
+    font-size: 20px;
+  }
+
+  .input-area button {
+    padding: 10px 16px;
+  }
+}
