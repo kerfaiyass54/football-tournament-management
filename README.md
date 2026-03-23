@@ -71,7 +71,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/kerfaiyassine/football-tournament-management.git
+   git clone https://github.com/kerfaiyass54/football-tournament-management.git
    cd football-tournament-management
    ```
 
@@ -117,7 +117,7 @@ We welcome contributions from the community! Here's how you can get involved:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/kerfaiyassine/football-tournament-management.git
+   git clone https://github.com/kerfaiyass54/football-tournament-management.git
    cd football-tournament-management
    ```
 
