@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="KubernetesApiProvider">{}</component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="KubernetesApiProvider"><![CDATA[{}]]></component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/fta-ui/Backend/team/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/match/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/Train/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/injury/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/player/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/ticket/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/builder/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/manager/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/referee/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/stadium/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/organizer/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/supporter/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/tournament/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-ui/Backend/discover-server/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/team/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/match/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/Train/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/injury/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/player/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/ticket/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/builder/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/manager/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/referee/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/stadium/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/organizer/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/supporter/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/tournament/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/fta-backend/discover-server/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
 </project>

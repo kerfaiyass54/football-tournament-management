@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/fta-backend/Train/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/builder/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/discover-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/injury/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/manager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/match/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/organizer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/player/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/referee/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/stadium/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/supporter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/team/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/ticket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-backend/tournament/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/Train/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/builder/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/discover-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/injury/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/manager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/match/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/organizer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/player/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/referee/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/stadium/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/supporter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/team/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/ticket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fta-ui/Backend/tournament/src/main/java" charset="UTF-8" />
+  </component>
+</project>
