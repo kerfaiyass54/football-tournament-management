@@ -1,10 +1,9 @@
 package com.kerfaiyassine.stadium.entities;
 
-import com.kerfaiyassine.stadium.enums.StadiumTypes;
+
+import com.kerfaiyassine.stadium.enums.OperationType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,47 +12,39 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.time.Instant;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Document(collection = "stadiums")
-public class Stadium {
+@Document(collection = "operations")
+public class Operation {
 
     @Id
     private String id;
 
     @NotNull
     @NotBlank
-    @Size(max = 100)
+    @Size(min = 20)
     private String name;
 
-    @NotNull
-    @PositiveOrZero
-    @Min(500)
-    private int capacity;
 
-    @NotNull
-    @PositiveOrZero
-    @Min(1920)
-    private int yearOfEstablishment;
+    private String description;
 
-    @NotNull
-    @Size(max = 100)
-    private String country;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
-    private StadiumTypes type;
+    private OperationType type;
+
+    private Instant startTime;
+
+    private Instant endTime;
 
     @DBRef
-    private List<Operation> operations;
-
-
+    @Indexed(unique = true)
+    private Stadium stadium;
 }
