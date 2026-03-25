@@ -8,7 +8,7 @@ export const ADMIN_ROUTES: Routes = [
       import('./admin.component').then(m => m.AdminComponent),
 
     canActivate: [roleGuard],
-    data: { roles: ['admin'] },
+    data: { roles: ['Admin'] },
 
     children: [
 

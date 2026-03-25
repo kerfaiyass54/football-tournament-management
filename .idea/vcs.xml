@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Frontend/football-app-front" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/fta-ui/Backend" vcs="Git" />
   </component>
 </project>
