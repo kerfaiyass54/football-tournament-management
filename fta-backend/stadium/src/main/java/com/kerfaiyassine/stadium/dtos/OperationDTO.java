@@ -18,6 +18,6 @@ public class OperationDTO {
     private String name;
     private String description;
     private OperationType operationType;
-    private int duration;
+    private long duration;
     private String stadiumName;
 }

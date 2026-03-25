@@ -14,4 +14,6 @@ public interface StadiumRepository extends MongoRepository<Stadium,String> {
     List<Stadium> findStadiumsByCountry(String country);
 
     List<Stadium> findStadiumsByType(StadiumTypes type);
+
+    Stadium findStadiumByName(String name);
 }
