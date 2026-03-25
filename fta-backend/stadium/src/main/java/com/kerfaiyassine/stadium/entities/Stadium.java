@@ -43,6 +43,10 @@ public class Stadium {
     private int yearOfEstablishment;
 
     @NotNull
+    @Size(max = 100)
+    private String country;
+
+    @NotNull
     @Enumerated(EnumType.STRING)
     private StadiumTypes type;
 
