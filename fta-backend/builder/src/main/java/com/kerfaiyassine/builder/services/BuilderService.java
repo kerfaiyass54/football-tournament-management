@@ -2,10 +2,8 @@ package com.kerfaiyassine.builder.services;
 
 
 import com.kerfaiyassine.builder.DTOs.BuilderDTO;
-import com.kerfaiyassine.builder.DTOs.ExpertiseStats;
 import com.kerfaiyassine.builder.DTOs.YearsMaxMin;
 import com.kerfaiyassine.builder.entities.Builder;
-import com.kerfaiyassine.builder.enums.Expertise;
 import com.kerfaiyassine.builder.repositories.BuilderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -22,7 +20,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 
 @Service
 @Slf4j
@@ -39,7 +36,6 @@ public class BuilderService {
         dto.setId(builder.getId());
         dto.setName(builder.getName());
         dto.setPrice(builder.getPrice());
-        dto.setExpertise(builder.getExpertise());
         dto.setNationality(builder.getNationality());
         dto.setYearEstablished(builder.getYearEstablished());
         return dto;
@@ -57,7 +53,6 @@ public class BuilderService {
     public BuilderDTO createBuilder(BuilderDTO builderDTO) {
         Builder builder = new Builder();
         builder.setName(builderDTO.getName());
-        builder.setExpertise(builderDTO.getExpertise());
         builder.setPrice(builderDTO.getPrice());
         builder.setNationality(builderDTO.getNationality());
         builder.setYearEstablished(builderDTO.getYearEstablished());
@@ -82,16 +77,7 @@ public class BuilderService {
                 .toList();
     }
 
-    @Cacheable(value = "builders_by_expertise",
-            key = "#expertise + '-' + #page + '-' + #size")
-    public List<BuilderDTO> getBuilderByExpertise(Expertise expertise, int size, int page) {
-        Pageable pageable = PageRequest.of(page, size);
-        return builderRepository
-                .findBuildersByExpertise(expertise, pageable)
-                .stream()
-                .map(this::mapToDTO)
-                .toList();
-    }
+
 
     @CacheEvict(value = {
             "builders",
@@ -114,17 +100,6 @@ public class BuilderService {
         return builderRepository.findAll(pageable).map(this::mapToDTO);
     }
 
-    @Cacheable("builders_stats")
-    public ExpertiseStats countBuilders(Expertise expertise) {
-        int sum = 0;
-        List<Builder> builders = builderRepository.findAll();
-        for (Builder builder : builders) {
-            if (builder.getExpertise().equals(expertise)) {
-                sum++;
-            }
-        }
-        return new ExpertiseStats(expertise, sum);
-    }
 
     @Cacheable("builders_years")
     public YearsMaxMin getYoungestAndOldest() {

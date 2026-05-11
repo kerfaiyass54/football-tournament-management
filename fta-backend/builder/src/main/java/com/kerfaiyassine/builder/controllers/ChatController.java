@@ -36,7 +36,6 @@ public class ChatController {
                     id INT PRIMARY KEY,
                     name VARCHAR(100) UNIQUE NOT NULL,
                     nationality VARCHAR(50) NOT NULL,
-                    expertise VARCHAR(255) NOT NULL,
                     year_established INT CHECK (year_established >= 1950),
                     price DECIMAL(19,2) CHECK (price >= 0)
                 );

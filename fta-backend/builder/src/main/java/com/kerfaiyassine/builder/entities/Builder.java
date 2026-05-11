@@ -1,15 +1,12 @@
 package com.kerfaiyassine.builder.entities;
 
 
-import com.kerfaiyassine.builder.enums.Expertise;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.EnumType;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -22,6 +19,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -46,9 +44,6 @@ public class Builder {
     @Column(name="nationality", nullable = false)
     private String nationality;
 
-    @Column(name="expertise", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Expertise expertise;
 
     @Min(1950)
     @PositiveOrZero
@@ -59,6 +54,8 @@ public class Builder {
     @PositiveOrZero
     @Column(name="price",nullable = false)
     private BigDecimal price;
+
+    private List<String> stadiumsId;
 
 
 

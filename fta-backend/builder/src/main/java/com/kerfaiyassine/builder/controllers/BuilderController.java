@@ -2,9 +2,7 @@ package com.kerfaiyassine.builder.controllers;
 
 
 import com.kerfaiyassine.builder.DTOs.BuilderDTO;
-import com.kerfaiyassine.builder.DTOs.ExpertiseStats;
 import com.kerfaiyassine.builder.DTOs.YearsMaxMin;
-import com.kerfaiyassine.builder.enums.Expertise;
 import com.kerfaiyassine.builder.services.BuilderService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -57,13 +55,6 @@ public class BuilderController {
         return new ResponseEntity<>(builders, HttpStatus.OK);
     }
 
-    @GetMapping("/expertises")
-    @Operation(summary = "Get builders list according to expertise")
-    public ResponseEntity<List<BuilderDTO>> getBuildersByExpertise(@Valid @RequestParam Expertise expertise, @RequestParam(defaultValue = "0") int page,
-                                                                   @RequestParam(defaultValue = "5") int size){
-        List<BuilderDTO> builders = builderService.getBuilderByExpertise(expertise, page, size);
-        return new ResponseEntity<>(builders, HttpStatus.OK);
-    }
 
     @PatchMapping("/")
     @Operation(summary = "Update a builder")
@@ -81,17 +72,7 @@ public class BuilderController {
     }
 
 
-    @GetMapping("/stats")
-    @Operation(summary = "Get builders stats for an expertise")
-    public ResponseEntity<ExpertiseStats> countBuilders(@Valid @RequestParam String expertise) {
-        try {
-            Expertise exp = Expertise.valueOf(expertise.toUpperCase());
-            ExpertiseStats stats = builderService.countBuilders(exp);
-            return new ResponseEntity<>(stats, HttpStatus.OK);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
+
 
     @GetMapping("/aged")
     @Operation(summary = "Get builders oldest and youngest")

@@ -1,14 +1,11 @@
 package com.kerfaiyassine.stadium.services;
 
 
-import com.kerfaiyassine.stadium.dtos.OperationAddDTO;
-import com.kerfaiyassine.stadium.dtos.OperationDTO;
 import com.kerfaiyassine.stadium.entities.Operation;
 import com.kerfaiyassine.stadium.entities.Stadium;
 import com.kerfaiyassine.stadium.repositories.OperationRepository;
 import com.kerfaiyassine.stadium.repositories.StadiumRepository;
 import com.kerfaiyassine.stadium.utils.OperationDurationUtils;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

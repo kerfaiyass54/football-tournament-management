@@ -52,8 +52,12 @@ public class Stadium {
     @Enumerated(EnumType.STRING)
     private StadiumTypes type;
 
+    private Long builderId;
+
     @DBRef
     private List<Operation> operations;
+
+
 
 
 }

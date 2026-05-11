@@ -1,10 +1,8 @@
 package com.kerfaiyassine.builder;
 
 import com.kerfaiyassine.builder.DTOs.BuilderDTO;
-import com.kerfaiyassine.builder.DTOs.ExpertiseStats;
 import com.kerfaiyassine.builder.DTOs.YearsMaxMin;
 import com.kerfaiyassine.builder.entities.Builder;
-import com.kerfaiyassine.builder.enums.Expertise;
 import com.kerfaiyassine.builder.repositories.BuilderRepository;
 import com.kerfaiyassine.builder.services.BuilderService;
 
@@ -42,7 +40,6 @@ class BuilderServiceTest {
         builder.setId(1);
         builder.setName("John Builder");
         builder.setNationality("French");
-        builder.setExpertise(Expertise.SAFETY);
         builder.setYearEstablished(2000);
         builder.setPrice(BigDecimal.valueOf(1000));
     }
@@ -56,7 +53,6 @@ class BuilderServiceTest {
         BuilderDTO dto = new BuilderDTO();
         dto.setName("John Builder");
         dto.setNationality("French");
-        dto.setExpertise(Expertise.SAFETY);
         dto.setYearEstablished(2000);
         dto.setPrice(BigDecimal.valueOf(1000));
 
@@ -107,19 +103,7 @@ class BuilderServiceTest {
 
     // ================= GET BY EXPERTISE =================
 
-    @Test
-    void getBuilderByExpertise_shouldReturnList() {
-        Pageable pageable = PageRequest.of(0, 10);
-        Page<Builder> page = new PageImpl<>(List.of(builder));
 
-        when(builderRepository.findBuildersByExpertise(Expertise.SAFETY, pageable))
-                .thenReturn(page);
-
-        List<BuilderDTO> result =
-                builderService.getBuilderByExpertise(Expertise.SAFETY, 10, 0);
-
-        assertEquals(1, result.size());
-    }
 
     // ================= UPDATE PRICE =================
 
@@ -150,19 +134,6 @@ class BuilderServiceTest {
 
     // ================= COUNT BUILDERS =================
 
-    @Test
-    void countBuilders_shouldReturnCorrectCount() {
-        Builder builder2 = new Builder();
-        builder2.setExpertise(Expertise.SAFETY);
-
-        when(builderRepository.findAll())
-                .thenReturn(List.of(builder, builder2));
-
-        ExpertiseStats stats =
-                builderService.countBuilders(Expertise.SAFETY);
-
-        assertEquals(2, stats.getNumberOfBuilders());
-    }
 
     // ================= YEARS MAX MIN =================
 

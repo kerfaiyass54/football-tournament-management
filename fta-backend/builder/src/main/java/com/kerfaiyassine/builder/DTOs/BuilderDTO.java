@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.kerfaiyassine.builder.enums.Expertise;
 
 import java.math.BigDecimal;
 
@@ -26,9 +25,6 @@ public class BuilderDTO {
     @NotBlank
     @Size(max = 50)
     private String nationality;
-
-    @NotNull
-    private Expertise expertise;
 
 
     @NotNull
