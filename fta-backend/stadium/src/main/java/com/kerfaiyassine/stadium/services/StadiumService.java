@@ -1,61 +1,112 @@
 package com.kerfaiyassine.stadium.services;
 
-
+import com.kerfaiyassine.stadium.dtos.OperationRequestDTO;
+import com.kerfaiyassine.stadium.entities.Operation;
 import com.kerfaiyassine.stadium.entities.Stadium;
-import com.kerfaiyassine.stadium.enums.StadiumTypes;
+import com.kerfaiyassine.stadium.enums.OperationType;
+import com.kerfaiyassine.stadium.repositories.OperationRepository;
 import com.kerfaiyassine.stadium.repositories.StadiumRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @Service
-@Slf4j
 public class StadiumService {
 
     private final StadiumRepository stadiumRepository;
-    public StadiumService(StadiumRepository stadiumRepository) {
+
+    private final OperationRepository operationRepository;
+
+    public StadiumService(
+            StadiumRepository stadiumRepository,
+            OperationRepository operationRepository
+    ) {
         this.stadiumRepository = stadiumRepository;
+        this.operationRepository = operationRepository;
     }
 
-    public StadiumDTO getStadiumDTO(Stadium stadium) {
-        StadiumDTO stadiumDTO = new StadiumDTO();
-        stadiumDTO.setId(stadium.getId());
-        stadiumDTO.setName(stadium.getName());
-        stadiumDTO.setCapacity(stadium.getCapacity());
-        stadiumDTO.setYearOfEstablishment(stadium.getYearOfEstablishment());
-        stadiumDTO.setType(stadium.getType());
-        return stadiumDTO;
+    public Stadium addStadium(Stadium stadium) {
+
+        return stadiumRepository.save(stadium);
     }
 
-    public Stadium getStadium(StadiumDTOCreation stadiumDTO) {
-        Stadium stadium = new Stadium();
-        stadium.setName(stadiumDTO.getName());
-        stadium.setCapacity(stadiumDTO.getCapacity());
-        stadium.setType(stadiumDTO.getType());
-        stadium.setYearOfEstablishment(stadiumDTO.getYearOfEstablishment());
-        return stadium;
+    public List<Stadium> getBuilderStadiums(Long builderId) {
+
+        return stadiumRepository.findByBuilderId(builderId);
     }
 
-    public StadiumDTO addStadium(StadiumDTOCreation stadiumDTOCreation){
-        Stadium stadium = getStadium(stadiumDTOCreation);
-        Stadium stade = stadiumRepository.save(stadium);
-        return getStadiumDTO(stade);
+    public Map<String, Object> getStats() {
+
+        List<Stadium> stadiums = stadiumRepository.findAll();
+
+        Map<String, Long> types = new HashMap<>();
+
+        for (Stadium stadium : stadiums) {
+
+            String type = stadium.getType().name();
+
+            types.put(
+                    type,
+                    types.getOrDefault(type, 0L) + 1
+            );
+        }
+
+        Map<String, Object> stats = new HashMap<>();
+
+        stats.put("totalStadiums", stadiums.size());
+        stats.put("stadiumsByType", types);
+
+        return stats;
     }
 
-    public StadiumDTO getStadium(String id){
-        Optional<Stadium> stadium = stadiumRepository.findById(id);
-        return stadium.map(this::getStadiumDTO).orElse(null);
+    public List<Operation> getOperations(String stadiumId) {
+
+        Stadium stadium = stadiumRepository.findById(stadiumId)
+                .orElseThrow(
+                        () -> new RuntimeException("Stadium not found")
+                );
+
+        return operationRepository.findByStadium(stadium);
     }
 
-    public List<StadiumDTO> getStadiumsByCountry(String country){
-        return stadiumRepository.findStadiumsByCountry(country).stream().map(this::getStadiumDTO).toList();
+    public Operation addOperation(
+            String stadiumId,
+            OperationRequestDTO dto
+    ) {
+
+        Stadium stadium = stadiumRepository.findById(stadiumId)
+                .orElseThrow(
+                        () -> new RuntimeException("Stadium not found")
+                );
+
+        Operation operation = new Operation();
+
+        operation.setName(dto.getName());
+
+        operation.setDescription(dto.getDescription());
+
+        operation.setType(
+                OperationType.valueOf(dto.getType())
+        );
+
+        operation.setStartTime(Instant.now());
+
+        operation.setEndTime(
+                Instant.now().plus(
+                        dto.getDurationInDays(),
+                        ChronoUnit.DAYS
+                )
+        );
+
+        operation.setStadium(stadium);
+
+        Operation savedOperation =
+                operationRepository.save(operation);
+
+        return savedOperation;
     }
-
-    public List<StadiumDTO> getStadiumsByType(StadiumTypes type){
-        return stadiumRepository.findStadiumsByType(type).stream().map(this::getStadiumDTO).toList();
-    }
-
-
 }

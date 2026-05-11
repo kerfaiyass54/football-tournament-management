@@ -1,55 +1,82 @@
 package com.kerfaiyassine.stadium.controllers;
 
-import com.kerfaiyassine.stadium.enums.StadiumTypes;
+import com.kerfaiyassine.stadium.dtos.OperationRequestDTO;
+import com.kerfaiyassine.stadium.entities.Operation;
+import com.kerfaiyassine.stadium.entities.Stadium;
 import com.kerfaiyassine.stadium.services.StadiumService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import jakarta.validation.Valid;
-
-import java.util.List;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/stadium")
-@CrossOrigin("*")
+@RequestMapping("/api/stadiums")
 public class StadiumController {
 
     private final StadiumService stadiumService;
-    public StadiumController(StadiumService stadiumService) {
+
+    public StadiumController(
+            StadiumService stadiumService
+    ) {
         this.stadiumService = stadiumService;
     }
 
-    @PostMapping("/")
-    public ResponseEntity<StadiumDTO>  createStadium(@Valid @RequestBody StadiumDTOCreation stadiumDTO){
-        StadiumDTO stadium = stadiumService.addStadium(stadiumDTO);
-        return new ResponseEntity<>(stadium, HttpStatus.CREATED);
+    @PostMapping
+    public ResponseEntity<Stadium> addStadium(
+            @Valid @RequestBody Stadium stadium
+    ) {
+
+        return new ResponseEntity<>(
+                stadiumService.addStadium(stadium),
+                HttpStatus.CREATED
+        );
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<StadiumDTO>  getStadiumById(@PathVariable String id){
-        StadiumDTO stadiumDTO = stadiumService.getStadium(id);
-        return new ResponseEntity<>(stadiumDTO, HttpStatus.OK);
+    @GetMapping("/builder/{builderId}")
+    public ResponseEntity<Object> getBuilderStadiums(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getBuilderStadiums(builderId)
+        );
     }
 
-    @GetMapping("/country/{country}")
-    public ResponseEntity<List<StadiumDTO>> getStadiumsByCountry(@PathVariable String country){
-        List<StadiumDTO> stadiumDTOList = stadiumService.getStadiumsByCountry(country);
-        return new ResponseEntity<>(stadiumDTOList, HttpStatus.OK);
+    @GetMapping("/stats")
+    public ResponseEntity<Object> getStats() {
+
+        return ResponseEntity.ok(
+                stadiumService.getStats()
+        );
     }
 
-    @GetMapping("/type/{type}")
-    public ResponseEntity<List<StadiumDTO>> getStadiumsByType(@PathVariable StadiumTypes type){
-        List<StadiumDTO>  stadiumDTOList = stadiumService.getStadiumsByType(type);
-        return new ResponseEntity<>(stadiumDTOList, HttpStatus.OK);
+    @GetMapping("/{stadiumId}/operations")
+    public ResponseEntity<Object> getOperations(
+            @PathVariable String stadiumId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getOperations(stadiumId)
+        );
     }
 
+    @PostMapping("/{stadiumId}/operations")
+    public ResponseEntity<Operation> addOperation(
+            @PathVariable String stadiumId,
+            @RequestBody OperationRequestDTO dto
+    ) {
 
-
+        return new ResponseEntity<>(
+                stadiumService.addOperation(
+                        stadiumId,
+                        dto
+                ),
+                HttpStatus.CREATED
+        );
+    }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface ManagerRepository extends MongoRepository<Manager, Long> {
+public interface ManagerRepository extends MongoRepository<Manager, String> {
 
     public Page<Manager> findManagersByNationality(String nationality, Pageable pageable);
 

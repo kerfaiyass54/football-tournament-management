@@ -49,5 +49,5 @@ public class Manager {
     private String nationality;
     
     
-    private List<Long> careers;
+    private List<String> careers;
 }

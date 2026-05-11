@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -53,4 +54,10 @@ public class Team {
     @NotBlank
     @Min(25)
     private int budget;
+
+    private List<String> contractsId;
+
+    private List<String> careersId;
+
+    private String stadiumId;
 }

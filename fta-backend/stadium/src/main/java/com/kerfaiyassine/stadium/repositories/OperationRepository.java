@@ -11,4 +11,7 @@ import java.util.List;
 public interface OperationRepository extends MongoRepository<Operation, String> {
 
     Page<Operation> findOperationsByStadium(Stadium stadium, Pageable pageable);
+
+    List<Operation> findByStadium(Stadium stadium);
+
 }

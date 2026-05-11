@@ -73,6 +73,8 @@ public class Player {
 
     private List<String> contracts;
 
+    private Boolean renewable;
+
     @NotNull
     @Min(165)
     private double height;
