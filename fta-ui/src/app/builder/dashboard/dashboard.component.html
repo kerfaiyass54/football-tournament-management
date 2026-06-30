@@ -1,1 +1,58 @@
-<p>dashboard works!</p>
+<div class="page-wrapper">
+<div class="container-fluid py-4">
+
+  <div class="row g-4">
+
+    <!-- Total Stadiums -->
+    <div class="col-lg-6">
+      <div class="dashboard-card stadium-card">
+
+        <div class="icon-box">
+          <i class="bi bi-building"></i>
+        </div>
+
+        <div>
+          <h6>Total Stadiums</h6>
+          <h2>{{ totalStadiums() }}</h2>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Total Operations -->
+    <div class="col-lg-6">
+      <div class="dashboard-card operation-card">
+
+        <div class="icon-box">
+          <i class="bi bi-tools"></i>
+        </div>
+
+        <div>
+          <h6>Total Operations</h6>
+          <h2>{{ totalOperations() }}</h2>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="col-12">
+
+      <div class="chart-card">
+
+        <div class="card-header-custom">
+          <h4>Stadium Distribution By Type</h4>
+        </div>
+
+        <div class="chart-wrapper">
+          <canvas id="stadiumTypesChart"></canvas>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>

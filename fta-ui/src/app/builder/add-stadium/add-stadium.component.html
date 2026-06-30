@@ -1,1 +1,245 @@
-<p>add-stadium works!</p>
+<div class="page-wrapper">
+
+  <div class="wizard-shell">
+
+    <aside class="sidebar">
+
+      <div
+        class="step-item"
+        [class.active]="step() === 1">
+
+        <div class="step-number">1</div>
+
+        <div>
+
+          <h6>Basic Info</h6>
+
+          <small>Name & Country</small>
+
+        </div>
+
+      </div>
+
+      <div
+        class="step-item"
+        [class.active]="step() === 2">
+
+        <div class="step-number">2</div>
+
+        <div>
+
+          <h6>Details</h6>
+
+          <small>Capacity & Year</small>
+
+        </div>
+
+      </div>
+
+      <div
+        class="step-item"
+        [class.active]="step() === 3">
+
+        <div class="step-number">3</div>
+
+        <div>
+
+          <h6>Review</h6>
+
+          <small>Finish</small>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+    <section class="content">
+
+      <div class="header">
+
+        <h1>Create Stadium</h1>
+
+        <p>
+          Add a new stadium to your collection
+        </p>
+
+      </div>
+
+      @if(step() === 1){
+
+        <div class="form-grid">
+
+          <div class="input-box">
+
+            <label>Name</label>
+
+            <input
+              [value]="name()"
+              (input)="name.set($any($event.target).value)"
+              placeholder="Camp Nou">
+
+          </div>
+
+          <div class="input-box">
+
+            <label>Country</label>
+
+            <input
+              [value]="country()"
+              (input)="country.set($any($event.target).value)"
+              placeholder="Spain">
+
+          </div>
+
+        </div>
+
+      }
+
+      @if(step() === 2){
+
+        <div class="form-grid">
+
+          <div class="input-box">
+
+            <label>Capacity</label>
+
+            <input
+              type="number"
+              [value]="capacity()"
+              (input)="capacity.set(+$any($event.target).value)">
+
+          </div>
+
+          <div class="input-box">
+
+            <label>Year</label>
+
+            <input
+              type="number"
+              [value]="yearOfEstablishment()"
+              (input)="yearOfEstablishment.set(+$any($event.target).value)">
+
+          </div>
+
+        </div>
+
+      }
+
+      @if(step() === 3){
+
+        <div class="types-grid">
+
+          @for(typeItem of stadiumTypes; track typeItem.value){
+
+            <div
+              class="type-card"
+              [class.selected]="type() === typeItem.value"
+              (click)="type.set($any(typeItem.value))">
+
+              <div class="emoji">
+                {{ typeItem.icon }}
+              </div>
+
+              <span>
+            {{ typeItem.title }}
+          </span>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+      <div class="preview">
+
+        <div class="preview-icon">
+          🏟️
+        </div>
+
+        <h3>
+          {{ name() || 'Your Stadium' }}
+        </h3>
+
+        <p>
+          {{ country() || 'Country' }}
+        </p>
+
+        <div class="preview-stats">
+
+          <div>
+            <span>Capacity</span>
+            <strong>{{ capacity() || '-' }}</strong>
+          </div>
+
+          <div>
+            <span>Year</span>
+            <strong>{{ yearOfEstablishment() || '-' }}</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="actions">
+
+        @if(step() > 1){
+
+          <button
+            class="btn-modern secondary"
+            (click)="previous()">
+
+            Previous
+
+          </button>
+
+        }
+
+        @if(step() === 1){
+
+          <button
+            class="btn-modern"
+            [disabled]="!canStep2()"
+            (click)="next()">
+
+            Continue
+
+          </button>
+
+        }
+
+        @if(step() === 2){
+
+          <button
+            class="btn-modern"
+            [disabled]="!canStep3()"
+            (click)="next()">
+
+            Continue
+
+          </button>
+
+        }
+
+        @if(step() === 3){
+
+          <button
+            class="btn-modern success"
+            [disabled]="!isValid()"
+            (click)="submit()">
+
+            Create Stadium
+
+          </button>
+
+        }
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

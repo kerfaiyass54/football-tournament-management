@@ -1,1 +1,93 @@
-<p>my-stadiums works!</p>
+<div class="page-wrapper">
+
+  <div class="stadiums-container">
+
+    <div class="section-header">
+
+      <div>
+        <h2 class="section-title">My Stadiums</h2>
+
+        <p class="section-subtitle">
+          Manage and monitor all your stadium projects
+        </p>
+      </div>
+
+      <div class="header-actions">
+
+        <div class="total-badge">
+          {{ stadiums().length }} Stadiums
+        </div>
+
+        <button
+          class="add-stadium-btn"
+          routerLink="/builder/add-stadium">
+
+          <i class="bi bi-plus-circle-fill"></i>
+
+          Add Stadium
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="stadiums-list">
+
+      @for (stadium of stadiums(); track stadium.id) {
+
+        <div class="stadium-card">
+
+          <div class="stadium-glow"></div>
+
+          <div class="stadium-left">
+
+            <div class="stadium-icon">
+              🏟️
+            </div>
+
+            <div class="stadium-info">
+
+              <h4>{{ stadium.name }}</h4>
+
+              <p>{{ stadium.country }}</p>
+
+              <div class="stats">
+
+                <div class="stat-item">
+                  <small>Capacity</small>
+                  <strong>
+                    {{ stadium.capacity | number }}
+                  </strong>
+                </div>
+
+                <div class="stat-item">
+                  <small>Built</small>
+                  <strong>
+                    {{ stadium.yearOfEstablishment }}
+                  </strong>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="stadium-right">
+
+            <div class="type-badge">
+              {{ stadium.type }}
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

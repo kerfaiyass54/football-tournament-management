@@ -18,7 +18,7 @@ export class BuilderComponent {
     {
       index: 0,
       label: 'Dashboard',
-      link: '/builder/dashboard'
+      link: '/builder'
     },
     {
       index: 1,
@@ -27,18 +27,8 @@ export class BuilderComponent {
     },
     {
       index: 2,
-      label: 'Add Stadium',
-      link: '/builder/add-stadium'
-    },
-    {
-      index: 3,
       label: 'Operations',
       link: '/builder/operations'
-    },
-    {
-      index: 4,
-      label: 'Statistics',
-      link: '/builder/statistics'
     }
   ];
 

@@ -1,46 +1,54 @@
 import { Routes } from '@angular/router';
+import { roleGuard } from '../Shared/services/guard/auth.guard';
 
 export const BUILDER_ROUTES: Routes = [
-
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
-  },
-
-  {
-    path: 'dashboard',
     loadComponent: () =>
-      import('./dashboard/dashboard.component')
-        .then(c => c.DashboardComponent)
-  },
+      import('./builder.component').then(c => c.BuilderComponent),
 
-  {
-    path: 'stadiums',
-    loadComponent: () =>
-      import('./my-stadiums/my-stadiums.component')
-        .then(c => c.MyStadiumsComponent)
-  },
+    canActivate: [roleGuard],
+    data: { roles: ['Builder'] },
 
-  {
-    path: 'add-stadium',
-    loadComponent: () =>
-      import('./add-stadium/add-stadium.component')
-        .then(c => c.AddStadiumComponent)
-  },
+    children: [
+      // ================= HOME =================
+      {
+        path: '',
+        loadComponent: () =>
+          import('./dashboard/dashboard.component')
+            .then(c => c.DashboardComponent)
+      },
 
-  {
-    path: 'operations',
-    loadComponent: () =>
-      import('./operations/operations.component')
-        .then(c => c.OperationsComponent)
-  },
+      // ================= STADIUMS =================
+      {
+        path: 'stadiums',
+        loadComponent: () =>
+          import('./my-stadiums/my-stadiums.component')
+            .then(c => c.MyStadiumsComponent)
+      },
 
-  {
-    path: 'statistics',
-    loadComponent: () =>
-      import('./statistics/statistics.component')
-        .then(c => c.StatisticsComponent)
+      {
+        path: 'add-stadium',
+        loadComponent: () =>
+          import('./add-stadium/add-stadium.component')
+            .then(c => c.AddStadiumComponent)
+      },
+
+      // ================= OPERATIONS =================
+      {
+        path: 'operations',
+        loadComponent: () =>
+          import('./operations/operations.component')
+            .then(c => c.OperationsComponent)
+      },
+
+      // ================= STATISTICS =================
+      {
+        path: 'statistics',
+        loadComponent: () =>
+          import('./statistics/statistics.component')
+            .then(c => c.StatisticsComponent)
+      }
+    ]
   }
-
 ];
