@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,7 +11,7 @@
         <module name="gateway" />
         <module name="discover-server" />
       </profile>
-      <profile name="Annotation profile for stadium" enabled="true">
+      <profile name="Annotation profile for builder" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -21,6 +22,7 @@
         <module name="match (1)" />
         <module name="Train (1)" />
         <module name="injury (1)" />
+        <module name="team" />
         <module name="tournament" />
         <module name="referee" />
         <module name="supporter" />
@@ -28,19 +30,12 @@
         <module name="builder (1)" />
         <module name="player (1)" />
         <module name="organizer" />
+        <module name="builder" />
         <module name="stadium" />
+        <module name="player" />
         <module name="ticket (1)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="builder" target="21" />
-      <module name="injury" target="21" />
-      <module name="match" target="21" />
-      <module name="player" target="21" />
-      <module name="team" target="21" />
-      <module name="ticket" target="21" />
-      <module name="Train" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

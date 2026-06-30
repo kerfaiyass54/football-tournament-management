@@ -1,6 +1,7 @@
 package com.kerfaiyassine.stadium.controllers;
 
 import com.kerfaiyassine.stadium.dtos.OperationRequestDTO;
+import com.kerfaiyassine.stadium.dtos.StadiumRequestDTO;
 import com.kerfaiyassine.stadium.entities.Operation;
 import com.kerfaiyassine.stadium.entities.Stadium;
 import com.kerfaiyassine.stadium.services.StadiumService;
@@ -28,7 +29,7 @@ public class StadiumController {
 
     @PostMapping
     public ResponseEntity<Stadium> addStadium(
-            @Valid @RequestBody Stadium stadium
+            @Valid @RequestBody StadiumRequestDTO stadium
     ) {
 
         return new ResponseEntity<>(

@@ -95,6 +95,12 @@ public class BuilderController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/builder/name/{name}")
+    public ResponseEntity<BuilderDTO> getBuilderByName(@PathVariable String name){
+        BuilderDTO builderDTO = builderService.getBuilderByName(name);
+        return new ResponseEntity<>(builderDTO, HttpStatus.OK);
+    }
+
 
 
 

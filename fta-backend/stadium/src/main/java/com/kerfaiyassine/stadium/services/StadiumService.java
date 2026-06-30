@@ -1,6 +1,7 @@
 package com.kerfaiyassine.stadium.services;
 
 import com.kerfaiyassine.stadium.dtos.OperationRequestDTO;
+import com.kerfaiyassine.stadium.dtos.StadiumRequestDTO;
 import com.kerfaiyassine.stadium.entities.Operation;
 import com.kerfaiyassine.stadium.entities.Stadium;
 import com.kerfaiyassine.stadium.enums.OperationType;
@@ -29,11 +30,21 @@ public class StadiumService {
         this.operationRepository = operationRepository;
     }
 
-    public Stadium addStadium(Stadium stadium) {
-
-        return stadiumRepository.save(stadium);
+    private Stadium toEntity(StadiumRequestDTO dto) {
+        Stadium stadium = new Stadium();
+        stadium.setName(dto.getName());
+        stadium.setCapacity(dto.getCapacity());
+        stadium.setYearOfEstablishment(dto.getYearOfEstablishment());
+        stadium.setCountry(dto.getCountry());
+        stadium.setType(dto.getType());
+        return stadium;
     }
 
+    public Stadium addStadium(StadiumRequestDTO dto) {
+        Stadium stadium = toEntity(dto);
+        stadium.setBuilderId(dto.getBuilderId());
+        return stadiumRepository.save(stadium);
+    }
     public List<Stadium> getBuilderStadiums(Long builderId) {
 
         return stadiumRepository.findByBuilderId(builderId);

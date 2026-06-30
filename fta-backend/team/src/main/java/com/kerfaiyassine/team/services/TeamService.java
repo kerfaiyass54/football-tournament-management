@@ -28,6 +28,7 @@ public class TeamService {
 
     public TeamDTO mapToDTO(Team team){
         TeamDTO teamDTO = new TeamDTO();
+        teamDTO.setId(team.getId());
         teamDTO.setName(team.getName());
         teamDTO.setBudget(team.getBudget());
         teamDTO.setCity(team.getCity());
@@ -107,6 +108,14 @@ public class TeamService {
 
     public TeamDTO getTeamById(String id){
         return mapToDTO(teamRepository.findTeamById(id));
+    }
+
+    public TeamDTO getByName(
+            String name
+    ){
+
+        return mapToDTO(teamRepository
+                .findByName(name).get());
     }
 
 

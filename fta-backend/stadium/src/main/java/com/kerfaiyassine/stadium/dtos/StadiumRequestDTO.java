@@ -1,4 +1,4 @@
-package com.kerfaiyassine.builder.DTOs;
+package com.kerfaiyassine.stadium.dtos;
 
 import com.kerfaiyassine.stadium.enums.StadiumTypes;
 import jakarta.validation.constraints.Min;

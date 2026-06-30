@@ -84,10 +84,17 @@ public class ManagerController {
     }
 
     @GetMapping("/stats")
-    @Operation(summary = "Get nmber of managers per status")
+    @Operation(summary = "Get number of managers per status")
     public ResponseEntity<Integer> numberOfManagerByStatus(@Valid @RequestParam ManagerStatus managerStatus){
         Integer managerNumber = managerService.numberOfManagerByStatus(managerStatus);
         return ResponseEntity.ok(managerNumber);
+    }
+
+    @GetMapping("/by-name/{name}")
+    @Operation(summary = "Get manager by name")
+    public ResponseEntity<ManagerDTO> getManagerByName(@Valid @PathVariable String name){
+        ManagerDTO managerDTO = managerService.getManagerDetails(name);
+        return ResponseEntity.ok(managerDTO);
     }
 
 }

@@ -26,9 +26,9 @@ export const routes: Routes = [
         path: 'builder',
         canActivate: [roleGuard],
         data: { roles: ['Builder'] },
-        loadComponent: () =>
-          import('./builder/builder.component')
-            .then(c => c.BuilderComponent)
+        loadChildren: () =>
+          import('./builder/builder.routes')
+            .then(r => r.BUILDER_ROUTES)
       },
 
       // =========================

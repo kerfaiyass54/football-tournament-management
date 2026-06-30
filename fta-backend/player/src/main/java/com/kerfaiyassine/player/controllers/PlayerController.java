@@ -45,7 +45,7 @@ public class PlayerController {
         return new ResponseEntity<>(playerDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Find player by name")
     public ResponseEntity<PlayerDTO> findPlayerByName(@RequestParam String name) {
         PlayerDTO playerDTO = playerService.getPlayerByName(name);

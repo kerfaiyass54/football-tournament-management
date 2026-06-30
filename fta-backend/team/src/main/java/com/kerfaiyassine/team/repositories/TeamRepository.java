@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.util.Optional;
+
 
 public interface TeamRepository extends MongoRepository<Team, String> {
 
@@ -14,4 +16,6 @@ public interface TeamRepository extends MongoRepository<Team, String> {
     public Page<Team> findTeamsByCity(String city, Pageable pageable);
     public Page<Team> findTeamsByEstablishYear(int establishYear,Pageable pageable);
     public Team findTeamById(String id);
+    Optional<Team> findByName(String name);
+
 }

@@ -66,6 +66,18 @@ export class KeycloakService {
     await this.keycloak.logout({ redirectUri: window.location.origin });
   }
 
+  getUsername(): string {
+
+    const tokenParsed: any =
+      this.keycloak.tokenParsed;
+
+    return (
+      tokenParsed?.preferred_username ||
+      tokenParsed?.username ||
+      ''
+    );
+  }
+
   async loadUserProfile(): Promise<any> {
     try {
       return await this.keycloak.loadUserProfile();

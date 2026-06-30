@@ -150,6 +150,11 @@ public class BuilderService {
     }
 
 
+    public BuilderDTO getBuilderByName(String name){
+        return mapToDTO(builderRepository.findBuilderByName(name));
+    }
+
+
 
 
 

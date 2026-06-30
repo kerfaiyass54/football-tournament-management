@@ -14,4 +14,6 @@ public interface BuilderRepository extends JpaRepository<Builder, Integer> {
 
     public Page<Builder> findAll(Pageable pageable);
 
+    public Builder findBuilderByName(String name);
+
 }

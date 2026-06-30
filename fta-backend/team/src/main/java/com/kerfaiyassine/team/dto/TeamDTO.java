@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 public class TeamDTO {
 
+    private String id;
     private String name;
     private int establishYear;
     private int rank;

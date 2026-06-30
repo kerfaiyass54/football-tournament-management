@@ -70,7 +70,7 @@ public class ManagerService {
 
     @Cacheable(value = "managers", key = "#id")
     public ManagerDTO getManager(String id) {
-        Optional<Manager> manager = managerRepository.findById(Long.valueOf(id));
+        Optional<Manager> manager = managerRepository.findById(id);
         return manager.map(this::mapToDTO).orElse(null);
     }
 
@@ -111,12 +111,16 @@ public class ManagerService {
             "managers_count"
     }, allEntries = true)
     public void changeStatus(String id, ManagerStatus managerStatus) {
-        Optional<Manager> manager = managerRepository.findById(Long.valueOf(id));
+        Optional<Manager> manager = managerRepository.findById(id);
         if (manager.isPresent()) {
             Manager managerObj = manager.get();
             managerObj.setStatus(managerStatus);
             managerRepository.save(managerObj);
         }
+    }
+
+    public ManagerDTO getManagerDetails(String name){
+        return mapToDTO(managerRepository.findManagerByName(name));
     }
 
 }
