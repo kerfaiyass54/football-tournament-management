@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/stadiums")
 public class StadiumController {
@@ -78,6 +80,56 @@ public class StadiumController {
                         dto
                 ),
                 HttpStatus.CREATED
+        );
+    }
+
+    @GetMapping("/{stadiumId}/operations/pending")
+    public ResponseEntity<List<Operation>> getPendingOperations(
+            @PathVariable String stadiumId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getPendingOperations(stadiumId)
+        );
+    }
+
+    @GetMapping("/{stadiumId}/operations/completed")
+    public ResponseEntity<List<Operation>> getCompletedOperations(
+            @PathVariable String stadiumId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getCompletedOperations(stadiumId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations")
+    public ResponseEntity<List<Operation>> getBuilderOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getBuilderOperations(builderId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations/pending")
+    public ResponseEntity<List<Operation>> getBuilderPendingOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getBuilderPendingOperations(builderId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations/completed")
+    public ResponseEntity<List<Operation>> getBuilderCompletedOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                stadiumService.getBuilderCompletedOperations(builderId)
         );
     }
 }

@@ -120,4 +120,66 @@ public class StadiumService {
 
         return savedOperation;
     }
+
+    public List<Operation> getPendingOperations(
+            String stadiumId
+    ) {
+
+        Stadium stadium = stadiumRepository.findById(stadiumId)
+                .orElseThrow(
+                        () -> new RuntimeException("Stadium not found")
+                );
+
+        return operationRepository.findByStadiumAndEndTimeAfter(
+                stadium,
+                Instant.now()
+        );
+    }
+
+    public List<Operation> getCompletedOperations(
+            String stadiumId
+    ) {
+
+        Stadium stadium = stadiumRepository.findById(stadiumId)
+                .orElseThrow(
+                        () -> new RuntimeException("Stadium not found")
+                );
+
+        return operationRepository.findByStadiumAndEndTimeBefore(
+                stadium,
+                Instant.now()
+        );
+    }
+
+    public List<Operation> getBuilderOperations(
+            Long builderId
+    ) {
+
+        return operationRepository
+                .findByStadiumBuilderId(builderId);
+    }
+
+    public List<Operation> getBuilderPendingOperations(
+            Long builderId
+    ) {
+
+        return operationRepository
+                .findByStadiumBuilderIdAndEndTimeAfter(
+                        builderId,
+                        Instant.now()
+                );
+    }
+
+    public List<Operation> getBuilderCompletedOperations(
+            Long builderId
+    ) {
+
+        return operationRepository
+                .findByStadiumBuilderIdAndEndTimeBefore(
+                        builderId,
+                        Instant.now()
+                );
+    }
+
+
 }

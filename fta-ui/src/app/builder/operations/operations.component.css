@@ -1,0 +1,347 @@
+:host {
+  display: block;
+  padding: 5rem;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #06b6d4
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: .3rem;
+}
+
+.page-header p {
+  color: #64748b;
+  margin: 0;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-card {
+
+  border-radius: 28px;
+
+  padding: 1rem;
+
+  background: rgba(255,255,255,.85);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 15px 35px rgba(15,23,42,.08);
+
+  height: 630px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 1rem;
+}
+
+.section-header h3 {
+
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  margin: 0;
+}
+
+.section-header span {
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: white;
+
+  font-weight: 700;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #06b6d4
+  );
+}
+
+/* =========================
+   LIST
+========================= */
+
+.operations-list {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  overflow-y: auto;
+
+  flex: 1;
+  max-height: 500px;
+
+  padding-right: 5px;
+}
+
+.operations-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.operations-list::-webkit-scrollbar-thumb {
+
+  border-radius: 30px;
+
+  background: linear-gradient(
+    #6366f1,
+    #06b6d4
+  );
+}
+
+/* =========================
+   CARD
+========================= */
+
+.operation-card {
+
+  padding: 1.2rem;
+
+  border-radius: 24px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: .35s ease;
+
+  animation: slideUp .5s ease;
+}
+
+.operation-card:hover {
+
+  transform:
+    translateY(-5px)
+    scale(1.01);
+}
+
+/* Active */
+
+.active-card {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(99,102,241,.08),
+      rgba(6,182,212,.08)
+    );
+
+  border: 1px solid rgba(99,102,241,.15);
+}
+
+.active-card:hover {
+
+  box-shadow:
+    0 15px 30px rgba(99,102,241,.15);
+}
+
+/* Finished */
+
+.finished-card {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(16,185,129,.08),
+      rgba(34,197,94,.08)
+    );
+
+  border: 1px solid rgba(16,185,129,.15);
+}
+
+.finished-card:hover {
+
+  box-shadow:
+    0 15px 30px rgba(16,185,129,.15);
+}
+
+/* =========================
+   TOP
+========================= */
+
+.operation-top {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: .7rem;
+}
+
+.operation-top h5 {
+
+  margin: 0;
+  font-weight: 700;
+}
+
+.operation-top small {
+  color: #64748b;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.status-badge {
+
+  padding: .45rem .9rem;
+
+  border-radius: 999px;
+
+  color: white;
+
+  font-size: .75rem;
+
+  font-weight: 700;
+}
+
+.running {
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #06b6d4
+    );
+}
+
+.completed {
+
+  background:
+    linear-gradient(
+      135deg,
+      #10b981,
+      #22c55e
+    );
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.operation-card p {
+
+  color: #64748b;
+
+  margin: .75rem 0;
+}
+
+.operation-meta {
+
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: .8rem;
+
+  font-size: .85rem;
+
+  color: #475569;
+
+  font-weight: 600;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+
+  height: 10px;
+
+  border-radius: 999px;
+
+  overflow: hidden;
+
+  background: #e2e8f0;
+}
+
+.progress-fill {
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #06b6d4
+    );
+
+  transition: width .8s ease;
+}
+
+.completed-fill {
+
+  background:
+    linear-gradient(
+      90deg,
+      #10b981,
+      #22c55e
+    );
+}
+
+.progress-text {
+
+  display: block;
+
+  margin-top: .6rem;
+
+  color: #64748b;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes slideUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

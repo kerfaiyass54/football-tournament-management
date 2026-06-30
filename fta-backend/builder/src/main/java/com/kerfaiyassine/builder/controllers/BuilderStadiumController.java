@@ -66,6 +66,54 @@ public class BuilderStadiumController {
         );
     }
 
+    @GetMapping("/{stadiumId}/operations/pending")
+    public ResponseEntity<Object> getPendingOperations(
+            @PathVariable String stadiumId
+    ) {
+        return ResponseEntity.ok(
+                builderStadiumService.getPendingOperations(stadiumId)
+        );
+    }
+
+    @GetMapping("/{stadiumId}/operations/completed")
+    public ResponseEntity<Object> getCompletedOperations(
+            @PathVariable String stadiumId
+    ) {
+        return ResponseEntity.ok(
+                builderStadiumService.getCompletedOperations(stadiumId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations")
+    public ResponseEntity<Object> getBuilderOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                builderStadiumService.getBuilderOperations(builderId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations/pending")
+    public ResponseEntity<Object> getBuilderPendingOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                builderStadiumService.getBuilderPendingOperations(builderId)
+        );
+    }
+
+    @GetMapping("/builder/{builderId}/operations/completed")
+    public ResponseEntity<Object> getBuilderCompletedOperations(
+            @PathVariable Long builderId
+    ) {
+
+        return ResponseEntity.ok(
+                builderStadiumService.getBuilderCompletedOperations(builderId)
+        );
+    }
+
     @PostMapping("/{stadiumId}/operations")
     public ResponseEntity<Object> applyOperation(
             @PathVariable String stadiumId,

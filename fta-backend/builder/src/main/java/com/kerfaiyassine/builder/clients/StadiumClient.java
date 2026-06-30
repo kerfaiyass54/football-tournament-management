@@ -33,4 +33,29 @@ public interface StadiumClient {
             @PathVariable String stadiumId,
             @RequestBody OperationRequestDTO dto
     );
+
+    @GetMapping("/api/stadiums/{stadiumId}/operations/pending")
+    Object getPendingOperations(
+            @PathVariable String stadiumId
+    );
+
+    @GetMapping("/api/stadiums/{stadiumId}/operations/completed")
+    Object getCompletedOperations(
+            @PathVariable String stadiumId
+    );
+
+    @GetMapping("/api/stadiums/builder/{builderId}/operations")
+    Object getBuilderOperations(
+            @PathVariable Long builderId
+    );
+
+    @GetMapping("/api/stadiums/builder/{builderId}/operations/pending")
+    Object getBuilderPendingOperations(
+            @PathVariable Long builderId
+    );
+
+    @GetMapping("/api/stadiums/builder/{builderId}/operations/completed")
+    Object getBuilderCompletedOperations(
+            @PathVariable Long builderId
+    );
 }

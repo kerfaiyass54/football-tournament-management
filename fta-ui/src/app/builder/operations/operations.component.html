@@ -1,1 +1,230 @@
-<p>operations works!</p>
+<div class="operations-wrapper">
+
+  <div class="page-header">
+    <h1>Operations Center</h1>
+    <p>Track all construction and maintenance activities</p>
+  </div>
+
+  <div class="row g-4">
+
+
+    <div class="col-lg-6">
+
+      <div class="section-card">
+
+        <div class="section-header">
+          <h3>🔄 Ongoing Operations</h3>
+          <span>{{ remainingOperations().length }}</span>
+        </div>
+
+        <div class="operations-list">
+
+          @for (op of remainingOperations(); track op.id) {
+
+            <div class="operation-card active-card">
+
+              <div class="operation-top">
+
+                <div>
+                  <h5>{{ op.name }}</h5>
+                  <small>
+                    <i class="bi bi-building"></i>
+                    {{ op.stadium?.name }}
+                  </small>
+                </div>
+
+                <div class="status-badge running">
+                  In Progress
+                </div>
+
+              </div>
+
+              @if(op.description){
+                <p>
+                  {{ op.description }}
+                </p>
+              }
+
+              <div class="operation-meta">
+
+                <span>
+                  {{ formatType(op.type) }}
+                </span>
+
+                <span>
+                  {{ getDurationDays(op) }} days
+                </span>
+
+              </div>
+
+              <div class="progress-container">
+
+                <div
+                  class="progress-fill"
+                  [style.width.%]="getProgress(op)">
+                </div>
+
+              </div>
+
+              <div class="progress-footer">
+
+                <small class="progress-text">
+                  {{ getProgress(op) }}% completed
+                </small>
+
+                <small class="remaining-days">
+                  {{ getRemainingDays(op) }} days left
+                </small>
+
+              </div>
+
+              <div class="dates-row">
+
+                <span>
+                  <i class="bi bi-calendar-event"></i>
+                  {{ op.startTime | date:'MMM d, y' }}
+                </span>
+
+                <span>
+                  <i class="bi bi-flag"></i>
+                  {{ op.endTime | date:'MMM d, y' }}
+                </span>
+
+              </div>
+
+            </div>
+
+          }
+
+          @if(remainingOperations().length === 0){
+
+            <div class="empty-state">
+
+              <i class="bi bi-check2-circle"></i>
+
+              <h5>No Active Operations</h5>
+
+              <p>
+                All operations have been completed.
+              </p>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= COMPLETED ================= -->
+
+    <div class="col-lg-6">
+
+      <div class="section-card">
+
+        <div class="section-header">
+
+          <h3>✅ Completed Operations</h3>
+
+          <span>{{ finishedOperations().length }}</span>
+
+        </div>
+
+        <div class="operations-list">
+
+          @for (op of finishedOperations(); track op.id) {
+
+            <div class="operation-card finished-card">
+
+              <div class="operation-top">
+
+                <div>
+                  <h5>{{ op.name }}</h5>
+                  <small>
+                    <i class="bi bi-building"></i>
+                    {{ op.stadium?.name }}
+                  </small>
+                </div>
+
+                <div class="status-badge completed">
+                  Completed
+                </div>
+
+              </div>
+
+              @if(op.description){
+                <p>
+                  {{ op.description }}
+                </p>
+              }
+
+              <div class="operation-meta">
+
+                <span>
+                  {{ formatType(op.type) }}
+                </span>
+
+                <span>
+                  {{ getDurationDays(op) }} days
+                </span>
+
+              </div>
+
+              <div class="progress-container">
+
+                <div
+                  class="progress-fill completed-fill"
+                  style="width: 100%">
+                </div>
+
+              </div>
+
+              <small class="progress-text">
+                Completed Successfully
+              </small>
+
+              <div class="dates-row">
+
+                <span>
+                  <i class="bi bi-calendar-event"></i>
+                  {{ op.startTime | date:'MMM d, y' }}
+                </span>
+
+                <span>
+                  <i class="bi bi-check-circle"></i>
+                  {{ op.endTime | date:'MMM d, y' }}
+                </span>
+
+              </div>
+
+            </div>
+
+          }
+
+          @if(finishedOperations().length === 0){
+
+            <div class="empty-state">
+
+              <i class="bi bi-hourglass-split"></i>
+
+              <h5>No Completed Operations</h5>
+
+              <p>
+                Finished operations will appear here.
+              </p>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

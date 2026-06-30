@@ -38,4 +38,30 @@ public class BuilderStadiumService {
     ) {
         return stadiumClient.addOperation(stadiumId, dto);
     }
+
+    public Object getPendingOperations(String stadiumId) {
+        return stadiumClient.getPendingOperations(stadiumId);
+    }
+
+    public Object getCompletedOperations(String stadiumId) {
+        return stadiumClient.getCompletedOperations(stadiumId);
+    }
+
+    public Object getBuilderOperations(
+            Long builderId
+    ) {
+        return stadiumClient.getBuilderOperations(builderId);
+    }
+
+    public Object getBuilderPendingOperations(
+            Long builderId
+    ) {
+        return stadiumClient.getBuilderPendingOperations(builderId);
+    }
+
+    public Object getBuilderCompletedOperations(
+            Long builderId
+    ) {
+        return stadiumClient.getBuilderCompletedOperations(builderId);
+    }
 }

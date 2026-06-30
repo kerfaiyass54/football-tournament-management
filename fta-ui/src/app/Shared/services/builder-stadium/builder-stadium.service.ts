@@ -13,7 +13,7 @@ export class BuilderStadiumService {
     private http: HttpClient
   ) {}
 
-  addStadium(dto:any) {
+  addStadium(dto: any) {
 
     return this.http.post(
       this.api,
@@ -22,7 +22,7 @@ export class BuilderStadiumService {
   }
 
   getBuilderStadiums(
-    builderId:number
+    builderId: number
   ) {
 
     return this.http.get(
@@ -38,7 +38,7 @@ export class BuilderStadiumService {
   }
 
   getOperations(
-    stadiumId:string
+    stadiumId: string
   ) {
 
     return this.http.get(
@@ -46,9 +46,54 @@ export class BuilderStadiumService {
     );
   }
 
+  getPendingOperations(
+    stadiumId: string
+  ) {
+
+    return this.http.get(
+      `${this.api}/${stadiumId}/operations/pending`
+    );
+  }
+
+  getCompletedOperations(
+    stadiumId: string
+  ) {
+
+    return this.http.get(
+      `${this.api}/${stadiumId}/operations/completed`
+    );
+  }
+
+  getBuilderOperations(
+    builderId: number
+  ) {
+
+    return this.http.get(
+      `${this.api}/builder/${builderId}/operations`
+    );
+  }
+
+  getBuilderPendingOperations(
+    builderId: number
+  ) {
+
+    return this.http.get(
+      `${this.api}/builder/${builderId}/operations/pending`
+    );
+  }
+
+  getBuilderCompletedOperations(
+    builderId: number
+  ) {
+
+    return this.http.get(
+      `${this.api}/builder/${builderId}/operations/completed`
+    );
+  }
+
   applyOperation(
-    stadiumId:string,
-    dto:any
+    stadiumId: string,
+    dto: any
   ) {
 
     return this.http.post(
